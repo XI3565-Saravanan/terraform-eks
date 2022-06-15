@@ -35,7 +35,7 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly-EK
 resource "aws_eks_cluster" "uat-app-eks" {
  name = "uat-app-eks"
  role_arn = aws_iam_role.eks-iam-role.arn
- platform_version = "1.22"
+ 
 
  vpc_config {
   subnet_ids = [var.subnet_id_1, var.subnet_id_2]
