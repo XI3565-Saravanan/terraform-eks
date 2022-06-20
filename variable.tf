@@ -7,8 +7,3 @@
   type = string
   default = "subnet-your_second_subnet_id"
  }
-
-variable "region" {
-  type = string
-  default = "ap-south-1"
- }
