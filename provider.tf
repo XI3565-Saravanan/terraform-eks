@@ -11,10 +11,3 @@ terraform {
     #dynamodb_table = "dynamodb-table"
   }
 }
-
-
-provider "aws" {
-  region = var.region
-}
-
-
