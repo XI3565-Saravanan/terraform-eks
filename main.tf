@@ -32,10 +32,10 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly-EK
 }
 
 
-resource "aws_eks_cluster" "uat-app-eks" {
- name = "uat-app-eks"
+resource "aws_eks_cluster" "pfm-pre-prod-eks" {
+ name = "pfm-pre-prod-eks"
  role_arn = aws_iam_role.eks-iam-role.arn
- 
+ version  = 1.22
 
  vpc_config {
   subnet_ids = [var.subnet_id_1, var.subnet_id_2]
@@ -82,8 +82,8 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
   role    = aws_iam_role.workernodes.name
  }
 resource "aws_eks_node_group" "worker-node-group" {
-  cluster_name  = aws_eks_cluster.uat-app-eks.name
-  node_group_name = "uat-app-eks-workernodes"
+  cluster_name  = aws_eks_cluster.pfm-pre-prod-eks.name
+  node_group_name = "pfm-pre-prod-eks-workernodes"
   node_role_arn  = aws_iam_role.workernodes.arn
   subnet_ids   = [var.subnet_id_1, var.subnet_id_2]
   instance_types = ["t3.xlarge"]
